@@ -8,7 +8,7 @@ const App = () => {
 
   useEffect(() => {
     let map = tt.map({
-      key: process.env.TOM_TOM_API_KEY,
+      key: process.env.REACT_APP_TOM_TOM_API_KEY,
       container: mapElement.current,
     })
 
@@ -17,8 +17,8 @@ const App = () => {
   }, [])
 
   return (
-    <div className="App">
-      <div ref={mapElement}></div>
+    <div className="app">
+      <div ref={mapElement} className="map"></div>
     </div>
   );
 }
