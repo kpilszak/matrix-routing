@@ -22,11 +22,21 @@ const App = () => {
 
     setMap(map)
 
-  }, [])
+    return () => map.remove()
+  }, [longitude, latitude])
 
   return (
     <div className="app">
       <div ref={mapElement} className="map"></div>
+      <div className="search-bar">
+        <h1>Where to?</h1>
+        <input type="text" id="longitude" className="longitude" placeholder="Put in longitude"
+          onChange={(e) => { setLongitude(e.target.value) }}
+        />
+        <input type="text" id="latitude" className="latitude" placeholder="Put in latitude"
+          onChange={(e) => { setLatitude(e.target.value) }}
+        />
+      </div>
     </div>
   );
 }
