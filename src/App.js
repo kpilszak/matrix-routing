@@ -22,6 +22,15 @@ const App = () => {
 
     setMap(map)
 
+    const addMarker = () => { 
+      const element = document.createElement('div')
+      element.className = 'marker'
+      const marker = new tt.Marker({
+        draggable: true,
+        element: element
+      })
+     }
+
     return () => map.remove()
   }, [longitude, latitude])
 
