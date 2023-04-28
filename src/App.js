@@ -29,7 +29,10 @@ const App = () => {
         draggable: true,
         element: element
       })
+      .setLngLat([longitude, latitude])
+      .addTo(map)
      }
+     addMarker()
 
     return () => map.remove()
   }, [longitude, latitude])
