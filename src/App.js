@@ -38,7 +38,8 @@ const App = () => {
   }, [longitude, latitude])
 
   return (
-    <div className="app">
+    <>
+    { map && <div className="app">
       <div ref={mapElement} className="map"></div>
       <div className="search-bar">
         <h1>Where to?</h1>
@@ -49,7 +50,8 @@ const App = () => {
           onChange={(e) => { setLatitude(e.target.value) }}
         />
       </div>
-    </div>
+    </div>}
+    </>
   );
 }
 
