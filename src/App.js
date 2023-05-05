@@ -25,12 +25,20 @@ const App = () => {
     const addMarker = () => { 
       const element = document.createElement('div')
       element.className = 'marker'
+      
       const marker = new tt.Marker({
         draggable: true,
         element: element
       })
+      
       .setLngLat([longitude, latitude])
       .addTo(map)
+
+      marker.on('dragend', () => {
+        const lngLat = marker.getLngLat()
+        setLongitude(lngLat.lng)
+        setLatitude(lngLat.lat)
+      })
      }
      addMarker()
 
