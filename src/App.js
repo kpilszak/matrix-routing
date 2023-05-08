@@ -1,6 +1,7 @@
 import { useEffect, useState, useRef } from 'react';
-import './App.css';
 import * as tt from '@tomtom-international/web-sdk-maps';
+import './App.css';
+import '@tomtom-international/web-sdk-maps/dist/maps.css';
 
 const App = () => {
   const mapElement = useRef()
