@@ -48,6 +48,9 @@ const App = () => {
         setLongitude(lngLat.lng)
         setLatitude(lngLat.lat)
       })
+
+      marker.setPopup(popup).togglePopup()
+
      }
      addMarker()
 
