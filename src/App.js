@@ -1,5 +1,6 @@
 import { useEffect, useState, useRef } from 'react';
 import * as tt from '@tomtom-international/web-sdk-maps';
+import * as ttapi from '@tomtom-international/web-sdk-services';
 import './App.css';
 import '@tomtom-international/web-sdk-maps/dist/maps.css';
 
@@ -9,7 +10,21 @@ const App = () => {
   const [longitude, setLongitude] = useState(-0.112869)
   const [latitude, setLatitude] = useState(51.504)
 
+  const convertToPoints = (lngLat) => {
+    return {
+      point: {
+        latitude: lngLat.lat,
+        longitude: lngLat.lng
+      }
+    }
+  }
+
   useEffect(() => {
+    const origin = {
+      lng: longitude,
+      lat: latitude,
+    }
+
     let map = tt.map({
       key: process.env.REACT_APP_TOM_TOM_API_KEY,
       container: mapElement.current,
@@ -53,6 +68,16 @@ const App = () => {
 
      }
      addMarker()
+
+     const callParameters = {
+       key: process.env.REACT_APP_TOM_TOM_API_KEY,
+       destinations: pointsForDestinations,
+         origin: [convertToPoints(origin)]
+     }
+     return new Promise((resolve, reject) => {
+       ttapi.services
+       .matrixRouting(callParameters)
+     })
 
     return () => map.remove()
   }, [longitude, latitude])
