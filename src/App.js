@@ -67,17 +67,27 @@ const App = () => {
       marker.setPopup(popup).togglePopup()
 
      }
+    
      addMarker()
 
-     const callParameters = {
-       key: process.env.REACT_APP_TOM_TOM_API_KEY,
-       destinations: pointsForDestinations,
-         origin: [convertToPoints(origin)]
-     }
-     return new Promise((resolve, reject) => {
-       ttapi.services
-       .matrixRouting(callParameters)
-     })
+    // const pointsForDestinations = locations.map
+
+    // const callParameters = {
+    //    key: process.env.REACT_APP_TOM_TOM_API_KEY,
+    //    destinations: pointsForDestinations,
+    //      origin: [convertToPoints(origin)]
+    //  }
+
+    //  return new Promise((resolve, reject) => {
+    //    ttapi.services
+    //    .matrixRouting(callParameters)
+    //  })
+
+    const destinations = []
+    map.on('click', (e) => {
+      destinations.push(e.lngLat)
+      addDeliveryMarker()
+    })
 
     return () => map.remove()
   }, [longitude, latitude])
