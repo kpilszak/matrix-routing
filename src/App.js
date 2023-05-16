@@ -19,6 +19,16 @@ const App = () => {
     }
   }
 
+  const addDeliveryMarker = (lngLat, map) => {
+    const element = document.createElement('div')
+    element.className = 'marker-delivery'
+    new tt.Marker({
+      element: element
+    })
+    .setPopup(lngLat)
+    .addTo(map)
+  }
+
   useEffect(() => {
     const origin = {
       lng: longitude,
@@ -86,7 +96,7 @@ const App = () => {
     const destinations = []
     map.on('click', (e) => {
       destinations.push(e.lngLat)
-      addDeliveryMarker()
+      addDeliveryMarker(e.lngLat, map)
     })
 
     return () => map.remove()
