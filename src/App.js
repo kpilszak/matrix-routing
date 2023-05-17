@@ -35,6 +35,8 @@ const App = () => {
       lat: latitude,
     }
 
+    const destinations = []
+
     let map = tt.map({
       key: process.env.REACT_APP_TOM_TOM_API_KEY,
       container: mapElement.current,
@@ -93,7 +95,6 @@ const App = () => {
     //    .matrixRouting(callParameters)
     //  })
 
-    const destinations = []
     map.on('click', (e) => {
       destinations.push(e.lngLat)
       addDeliveryMarker(e.lngLat, map)
