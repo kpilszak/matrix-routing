@@ -82,18 +82,22 @@ const App = () => {
     
      addMarker()
 
-    // const pointsForDestinations = locations.map
+     const sortDestinations = (locations) => {
+      const pointsForDestinations = locations.map((destination) => {
+        return convertToPoints(destination)
+      })
 
-    // const callParameters = {
-    //    key: process.env.REACT_APP_TOM_TOM_API_KEY,
-    //    destinations: pointsForDestinations,
-    //      origin: [convertToPoints(origin)]
-    //  }
+       const callParameters = {
+         key: process.env.REACT_APP_TOM_TOM_API_KEY,
+         destinations: pointsForDestinations,
+         origin: [convertToPoints(origin)]
+       }
 
-    //  return new Promise((resolve, reject) => {
-    //    ttapi.services
-    //    .matrixRouting(callParameters)
-    //  })
+        return new Promise((resolve, reject) => {
+          ttapi.services
+          .matrixRouting(callParameters)
+        })
+     }
 
     map.on('click', (e) => {
       destinations.push(e.lngLat)
