@@ -96,6 +96,22 @@ const App = () => {
         return new Promise((resolve, reject) => {
           ttapi.services
           .matrixRouting(callParameters)
+          .then((matrixAPIResults) => {
+            const results = matrixAPIResults.matrix[0]
+            const resultsArray = results.map((result, index) => {
+              return {
+                location: locations[index],
+                drivingTime: results.response.routeSummary.travelTimeInSeconds,
+              }
+            })
+            resultsArray.sort((a, b) => {
+              return a.drivingTime - b.drivingTime
+            })
+            const sortedLocations = resultsArray.map((result) => {
+              return result.location
+            })
+            resolve(sortedLocations)
+          })
         })
      }
 
