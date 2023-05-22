@@ -115,6 +115,21 @@ const App = () => {
         })
      }
 
+     const recalculateRoutes = () => {
+      sortDestinations(destinations).then((sorted) => {
+        sorted.unshift(origin)
+
+        ttapi.services
+          .calculateRoute({
+            key: process.env.REACT_APP_TOM_TOM_API_KEY,
+            locations: sorted,
+          })
+          .then((routeData) => {
+            const geoJson = routeData.toGeoJson()
+          })
+      })
+     }
+
     map.on('click', (e) => {
       destinations.push(e.lngLat)
       addDeliveryMarker(e.lngLat, map)
