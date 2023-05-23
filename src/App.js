@@ -19,6 +19,25 @@ const App = () => {
     }
   }
 
+  const drawRoute = (geoJson, map) => {
+    if (map.getLayer('route')) {
+      map.removeLayer('route')
+      map.removeSource('route')
+    }
+    map.addLayer({
+      id: 'route',
+      type: 'line',
+      source: {
+        type: 'geojson',
+        data: geojson
+      },
+      paint: {
+        'line-color': 'red',
+        'line-width': 6
+      }
+    })
+  }
+
   const addDeliveryMarker = (lngLat, map) => {
     const element = document.createElement('div')
     element.className = 'marker-delivery'
@@ -126,6 +145,7 @@ const App = () => {
           })
           .then((routeData) => {
             const geoJson = routeData.toGeoJson()
+            drawRoute(geoJson, map)
           })
       })
      }
