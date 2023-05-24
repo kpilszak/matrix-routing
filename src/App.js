@@ -29,7 +29,7 @@ const App = () => {
       type: 'line',
       source: {
         type: 'geojson',
-        data: geojson
+        data: geoJson
       },
       paint: {
         'line-color': 'red',
@@ -153,6 +153,7 @@ const App = () => {
     map.on('click', (e) => {
       destinations.push(e.lngLat)
       addDeliveryMarker(e.lngLat, map)
+      recalculateRoutes()
     })
 
     return () => map.remove()
