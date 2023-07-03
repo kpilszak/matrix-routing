@@ -44,7 +44,7 @@ const App = () => {
     new tt.Marker({
       element: element
     })
-    .setPopup(lngLat)
+    .setLngLat(lngLat)
     .addTo(map)
   }
 
@@ -109,7 +109,7 @@ const App = () => {
        const callParameters = {
          key: process.env.REACT_APP_TOM_TOM_API_KEY,
          destinations: pointsForDestinations,
-         origin: [convertToPoints(origin)]
+         origins: [convertToPoints(origin)]
        }
 
         return new Promise((resolve, reject) => {
@@ -120,7 +120,7 @@ const App = () => {
             const resultsArray = results.map((result, index) => {
               return {
                 location: locations[index],
-                drivingTime: results.response.routeSummary.travelTimeInSeconds,
+                drivingTime: result.response.routeSummary.travelTimeInSeconds,
               }
             })
             resultsArray.sort((a, b) => {
