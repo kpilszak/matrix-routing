@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/static/css/main.9e68c97e.css",
-    "main.js": "/static/js/main.b0982ca6.js",
-    "index.html": "/index.html",
-    "main.9e68c97e.css.map": "/static/css/main.9e68c97e.css.map",
-    "main.b0982ca6.js.map": "/static/js/main.b0982ca6.js.map"
+    "main.css": "/matrix-routing/static/css/main.9e68c97e.css",
+    "main.js": "/matrix-routing/static/js/main.b0982ca6.js",
+    "index.html": "/matrix-routing/index.html",
+    "main.9e68c97e.css.map": "/matrix-routing/static/css/main.9e68c97e.css.map",
+    "main.b0982ca6.js.map": "/matrix-routing/static/js/main.b0982ca6.js.map"
   },
   "entrypoints": [
     "static/css/main.9e68c97e.css",
